@@ -22,6 +22,16 @@
 
             <!-- Email Address -->
             <div class="mt-4">
+                <x-label for="rol" :value="__('¿Qué Tipo de cuenta deseas en Devjobs?')" />
+
+                <select name="rol" id="rol"
+                    class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <option value="">-- Selecciona un Rol --</option>
+                    <option value="1">Developer - Obtener empleo</option>
+                    <option value="2">Reclutador - Publicar Empleos</option>
+                </select>
+            </div>
+            <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
