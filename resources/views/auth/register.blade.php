@@ -47,10 +47,8 @@
 
             <div class="flex justify-between">
                 <x-link :href="route('login')">
-
                     Iniciar Sesión
                 </x-link>
-
                 <x-link :href="route('password.request')">
                     Olvisate tu Password
                 </x-link>
