@@ -10,7 +10,6 @@
     </div>
     <div>
         <x-label for="salario" :value="__('Salario Mensual')" />
-
         <select wire:model="salario" id="salario"
             class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
             <option value="">-- Seleccione --</option>
@@ -39,7 +38,7 @@
     </div>
 
     <div>
-        <x-label for="empresa" :value="__('Titulo Vacante')" />
+        <x-label for="empresa" :value="__('Empresa')" />
 
         <x-input id="empresa" class="block mt-1 w-full" type="text" wire:model="empresa" :value="old('empresa')"
             placeholder="Empresa: ej. Netflix, Uber, Shopify" />
