@@ -9,20 +9,24 @@
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
-
+                @auth
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
-                        {{ __('Dashboard') }}
+                        {{ __('Mis vacantes') }}
                     </x-nav-link>
                     <x-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
                         {{ __('Crear Vacante') }}
                     </x-nav-link>
                 </div>
+                @endauth
+
+
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                @auth
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -52,6 +56,18 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                @endauth
+                @guest
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('login')">
+                        {{ __('Iniciar Session') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('register')">
+                        {{ __('Crear Cuenta') }}
+                    </x-nav-link>
+                </div>
+                @endguest
             </div>
 
             <!-- Hamburger -->
@@ -73,6 +89,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            @auth
             <x-responsive-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
@@ -94,11 +111,23 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                                    this.closest('form').submit();">
                         {{ __('Cerrar Sesión') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
         </div>
+        @endauth
+        @guest
+        <!-- Navigation Links -->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('login')">
+                {{ __('Iniciar Session') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('register')">
+                {{ __('Crear Cuenta') }}
+            </x-responsive-nav-link>
+        </div>
+        @endguest
     </div>
 </nav>
